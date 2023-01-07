@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    socket.on('updateTime', (data) => {
+    socket.on('syncTime', (data) => {
       setAuction(data);
       console.log(data);
     });

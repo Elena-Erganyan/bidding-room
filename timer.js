@@ -1,11 +1,15 @@
 const timerCountdown = (auction, socketIO) => {
   socketIO.on('connection', (socket) => {
     socket.on('requestTime', () => {
-      socketIO.emit('updateTime', auction);
+      socketIO.emit('syncTime', auction);
     });
   });
 
+  let nextTimeStamp = Date.now() + 1000;
+
   setTimeout(function countdown () {
+    const drift = Date.now() - nextTimeStamp;
+
     if (auction.remainingTime === 0) {
       if (auction.activeParticipant === auction.participants.length - 1) {
         auction.activeParticipant = 0;
@@ -20,7 +24,9 @@ const timerCountdown = (auction, socketIO) => {
       auction.remainingTime -= 1;
     }
 
-    setTimeout(countdown, 1000);
+    nextTimeStamp += 1000;
+
+    setTimeout(countdown, Math.max(0, 1000 - drift));
   }, 1000);
 };
 
