@@ -1,11 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
+const { v4: uuidv4 } = require('uuid');
 
-const initialState = {
+const auction = {
   nameOfAuction: 'Тестовые торги на аппарат ЛОТОС №2033564 (09.11.2020 07:00)',
   note: 'Уважаемые участники, во время вашего хода вы можете изменить параметры торгов, указанных в таблице:',
   activeParticipant: 0,
+  startDate: '01-01-2023',
   turnPeriod: 120,
+  remainingTime: 120,
   participants: [
     {
       id: uuidv4(),
@@ -78,19 +79,7 @@ const initialState = {
   },
 };
 
-export const auctionSlice = createSlice({
-  name: 'auction',
-  initialState,
-  reducers: {
-    changeActiveParticipant: (state) => {
-      state.activeParticipant = state.activeParticipant !== state.participants.length - 1 
-        ? state.activeParticipant + 1
-        : 0;    
-    },
-  },
-});
+auction.activeParticipant = Math.floor(((new Date() - new Date(auction.startDate)) / 1000) / auction.turnPeriod) % auction.participants.length;
+auction.remainingTime = Math.floor(auction.turnPeriod - ((new Date() - new Date(auction.startDate)) / 1000) % auction.turnPeriod);
 
-// Action creators are generated for each case reducer function
-export const { changeActiveParticipant } = auctionSlice.actions;
-
-export default auctionSlice.reducer;
+module.exports = { auction };

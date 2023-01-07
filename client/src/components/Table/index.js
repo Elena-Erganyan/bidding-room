@@ -1,18 +1,18 @@
 import { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import TableRow from '../TableRow';
 import Timer from '../Timer';
-import { v4 as uuidv4 } from 'uuid';
 import { StyledTableWrapper, StyledTable, StyledTableHead, StyledTableBody } from './styled';
 
-const Table = () => {
+const Table = ({auction}) => {
   const {
     activeParticipant,
+    remainingTime,
     turnPeriod,
     participants,
     tableHeadProperties,
     properties
-  } = useSelector((state) => state.auction);
+  } = auction;
 
   const tableWrapperRef = useRef(null);
   const timerRef = useRef(null);
@@ -33,8 +33,9 @@ const Table = () => {
                 if (property === 'turn') {
                   return i === activeParticipant &&
                       <Timer
-                        timePeriod={turnPeriod}
+                        remainingTime={remainingTime}
                         timerRef={timerRef}
+                        turnPeriod={turnPeriod}
                       />
                 } else if (property === 'params') {
                   return [`Участник №${i + 1}`, participant.name];
