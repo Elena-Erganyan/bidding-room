@@ -29,10 +29,17 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    socket.on('updateTime', (data) => {
+      setAuction(data);
+      console.log(data);
+    });
+  }, []);  
+
   return auction && (
     <StyledWrapper>
       <Header title={auction?.nameOfAuction} />
-      <Main auction={auction} />
+      <Main auction={auction} socket={socket} />
     </StyledWrapper>
   );
 }

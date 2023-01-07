@@ -1,12 +1,12 @@
 import Table from '../Table';
 import { StyledMain, StyledMainText } from "./styled";
 
-const Main = ({auction}) => {
+const Main = ({auction, socket}) => {
 
   return (
     <StyledMain>
       <StyledMainText>{auction.note}</StyledMainText>
-      <Table auction={auction} />
+      <Table auction={auction} socket={socket} />
     </StyledMain>
   );
 };

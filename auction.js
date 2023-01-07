@@ -4,7 +4,7 @@ const auction = {
   nameOfAuction: 'Тестовые торги на аппарат ЛОТОС №2033564 (09.11.2020 07:00)',
   note: 'Уважаемые участники, во время вашего хода вы можете изменить параметры торгов, указанных в таблице:',
   activeParticipant: 0,
-  startDate: '01-01-2023',
+  startDate: '2023-01-07',
   turnPeriod: 120,
   remainingTime: 120,
   participants: [

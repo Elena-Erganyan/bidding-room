@@ -4,7 +4,7 @@ import TableRow from '../TableRow';
 import Timer from '../Timer';
 import { StyledTableWrapper, StyledTable, StyledTableHead, StyledTableBody } from './styled';
 
-const Table = ({auction}) => {
+const Table = ({auction, socket}) => {
   const {
     activeParticipant,
     remainingTime,
@@ -32,11 +32,12 @@ const Table = ({auction}) => {
               data={participants.map((participant, i) => {
                 if (property === 'turn') {
                   return i === activeParticipant &&
-                      <Timer
-                        remainingTime={remainingTime}
-                        timerRef={timerRef}
-                        turnPeriod={turnPeriod}
-                      />
+                    <Timer
+                      remainingTime={remainingTime}
+                      socket={socket}
+                      timerRef={timerRef}
+                      turnPeriod={turnPeriod}
+                    />
                 } else if (property === 'params') {
                   return [`Участник №${i + 1}`, participant.name];
                 }
