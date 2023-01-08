@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { StyledTimer, StyledHourglass } from './styled';
 import hourglass from '../../images/hourglass.png';
 
 const Timer = ({remainingTime, socket, turnPeriod, timerRef}) => {
-  // remainingTime is time in seconds
+  // remainingTime and turnPeriod are in seconds
 
-  const [correctedInterval, setCorrectedInterval] = useState(1000); // miliseconds 
+  const [correctedInterval, setCorrectedInterval] = useState(1000); // in miliseconds
   const [timeLeft, setTimeLeft] = useState(remainingTime);
   
   const hours = Math.floor(timeLeft / 60 / 60).toString().padStart(2, '0');
@@ -13,6 +13,7 @@ const Timer = ({remainingTime, socket, turnPeriod, timerRef}) => {
   const seconds = (timeLeft % 60).toString().padStart(2, '0');
   
   useEffect(() => {
+    // the timestamp we should call the timer next
     let nextTimeStamp = Date.now() + 1000;
 
     const timerId = setTimeout(function countdown() {  
@@ -20,19 +21,20 @@ const Timer = ({remainingTime, socket, turnPeriod, timerRef}) => {
       
       if (drift > 1000) {
         // probably the browser or the tab was inactive
-        console.log("oops");
+        // so we should sync the time with the server
         socket.emit('requestTime');
       }
 
       setTimeLeft(timeLeft ? timeLeft - 1 : turnPeriod);
   
-      setCorrectedInterval(Math.max(0, 1000 - drift));
-
       // take into account drift
+      setCorrectedInterval(Math.max(0, 1000 - drift));
+        
     }, correctedInterval);
 
     return () => clearTimeout(timerId);
-    
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLeft]);
 
   return (

@@ -19,13 +19,15 @@ const timerCountdown = (auction, socketIO) => {
       
       auction.remainingTime = auction.turnPeriod;
 
-      socketIO.emit('turnUpdate', auction);
+      socketIO.emit('syncTime', auction);
     } else {
       auction.remainingTime -= 1;
     }
 
-    nextTimeStamp += 1000;
-
+    // the timestamp we should call the timer next
+    nextTimeStamp += 1000; 
+  
+    // take into account the drift
     setTimeout(countdown, Math.max(0, 1000 - drift));
   }, 1000);
 };

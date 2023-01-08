@@ -1,3 +1,4 @@
-## [Bidding Room](https://budget-app-ergelena23.koyeb.app/)
+## [Bidding Room]()
 
-(Node.js (Express), MongoDB (Mongoose), React, Redux, Styled Components, adaptive layout)
+Demonstration of synchronous timer operation for a bidding room
+(Node.js (Express), React, Socket.io, Styled Components, adaptive layout)

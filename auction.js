@@ -5,8 +5,8 @@ const auction = {
   note: 'Уважаемые участники, во время вашего хода вы можете изменить параметры торгов, указанных в таблице:',
   activeParticipant: 0,
   startDate: '2023-01-07',
-  turnPeriod: 120,
-  remainingTime: 120,
+  turnPeriod: 120, // in seconds
+  remainingTime: 120, // in seconds
   participants: [
     {
       id: uuidv4(),

@@ -1,4 +1,4 @@
-import { StyledHeader, StyledTitle, StyledTitleSpan } from "./styled";
+import { StyledHeader, StyledTitle, StyledTitleSpan } from './styled';
 
 const Header = ({title}) => {
 

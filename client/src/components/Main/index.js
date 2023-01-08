@@ -1,5 +1,5 @@
 import Table from '../Table';
-import { StyledMain, StyledMainText } from "./styled";
+import { StyledMain, StyledMainText } from './styled';
 
 const Main = ({auction, socket}) => {
 

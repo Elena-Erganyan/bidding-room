@@ -24,15 +24,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    socket.on('turnUpdate', (data) => {
-      setAuction(data);
-    });
-  }, []);
-
-  useEffect(() => {
     socket.on('syncTime', (data) => {
       setAuction(data);
-      console.log(data);
     });
   }, []);  
 

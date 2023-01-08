@@ -1,18 +1,20 @@
+require('dotenv').config(0);
+
 const express = require('express');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const cors = require('cors');
 const path = require('path');
-const { timerCountdown } = require('./timer');
 
 const socketIO = require('socket.io')(server, {
   cors: {
-    origin: "http://localhost:3000"
+    origin: process.env.URI
   }
 });
 
 const { auction } = require('./auction');
+const { timerCountdown } = require('./timer');
 
 // middleware
 app.use(express.static(path.join(__dirname, './client/build')));
@@ -29,8 +31,8 @@ app.get('/*', (_, res) => {
 });
 
 // listen for requests
-server.listen(4000, () => {
-  console.log('listening on port', 4000);
+server.listen(process.env.PORT, () => {
+  console.log('listening on port', process.env.PORT);
   timerCountdown(auction, socketIO);
 });
   

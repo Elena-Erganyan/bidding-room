@@ -11,7 +11,7 @@ const Table = ({auction, socket}) => {
     turnPeriod,
     participants,
     tableHeadProperties,
-    properties
+    properties,
   } = auction;
 
   const tableWrapperRef = useRef(null);
@@ -19,6 +19,7 @@ const Table = ({auction, socket}) => {
   const firstColumnRef = useRef(null);
 
   useEffect(() => {
+    // scrolling to the active participant in mobile/tablet view
     // timerRef.current.offsetParent.nodeName === 'TABLE' because it has 'postition: relative'
     tableWrapperRef.current.scrollLeft = timerRef.current.offsetLeft - firstColumnRef.current.clientWidth;
   }, [activeParticipant]);
