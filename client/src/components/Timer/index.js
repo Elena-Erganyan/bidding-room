@@ -39,7 +39,7 @@ const Timer = ({remainingTime, socket, turnPeriod, timerRef}) => {
 
   return (
     <StyledTimer ref={timerRef}>
-      <div>{hours} : {minutes} : {seconds}</div>
+      <div style={{color: '#cd1719'}}>{hours} : {minutes} : {seconds}</div>
       <StyledHourglass alt="hourglass" src={hourglass} width="15rem" />
     </StyledTimer>
   );

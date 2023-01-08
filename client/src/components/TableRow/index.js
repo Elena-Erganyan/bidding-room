@@ -15,7 +15,7 @@ const TableRow = ({data, firstColumnRef, rowConfigs}) => {
       >
         {header}
       </StyledTableCell>
-      {data.map((value) => {
+      {data.map((value) => { // data is the participants inputs for this table row
         return (
           <StyledTableCell key={uuidv4()} color={rowCellsColor}>
             {Array.isArray(value)

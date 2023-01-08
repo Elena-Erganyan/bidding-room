@@ -8,10 +8,6 @@ export const StyledTimer = styled.div`
   border-radius: 0.3rem;
   background-color: #f2dede;
   text-align: center;
-
-  div {
-    color: #cd1719;
-  }
 `;
 
 export const StyledHourglass = styled.img`

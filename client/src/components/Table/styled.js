@@ -5,26 +5,25 @@ export const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   
-  tr {
-    background-color: white;
-  }
-  
   th {
     font-weight: normal;
-    text-align: left;
+  }
+
+  tr {
+    background-color: white;
   }
 `;
 
 export const StyledTableHead = styled.thead`
   border-bottom: 2px solid #d3d3d3;
   text-transform: uppercase;
-  
-  th {
-    text-align: center;
-  }
 `;
 
 export const StyledTableBody = styled.tbody`
+  th {
+    text-align: left;
+  }
+
   tr:nth-child(odd) {
     background-color: #f4f4f4;
   }
