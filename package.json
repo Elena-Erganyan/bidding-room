@@ -1,7 +1,7 @@
 {
   "name": "bidding-room",
   "version": "1.0.0",
-  "description": "(Node.js (Express), MongoDB (Mongoose), React, Redux, Styled Components, adaptive layout)",
+  "description": "Demonstration of synchronous timer operation for a bidding room",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
