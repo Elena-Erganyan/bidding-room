@@ -2,7 +2,7 @@
   "name": "bidding-room",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:4000",
+  "proxy": "http://localhost:4000",
   "secure": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
