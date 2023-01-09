@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Main from '../components/Main';
 import { StyledWrapper } from './styled';
 
-const socket = socketIO.connect('', { withCredentials: true });
+const socket = socketIO.connect();
 
 function App() {
   const [auction, setAuction] = useState(null);

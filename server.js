@@ -9,8 +9,7 @@ const path = require('path');
 
 const socketIO = require('socket.io')(server, {
   cors: {
-    origin: process.env.URI,
-    credentials: true
+    origin: process.env.URI
   }
 });
 
